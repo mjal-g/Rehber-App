@@ -1,0 +1,59 @@
+﻿@model List<RehberApp.Models.Directory>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+Rehberimde ki Kullanıcılar
+<table>
+    <thead>
+        <tr>
+            <th> Kullanıcı </th>
+            <th> Telefon Numarası </th>
+            <th> Email </th>
+            <th> Kurumu </th>
+            <th> İşlemler </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model != null)
+            {
+                foreach (var d in Model)
+                {
+                    <tr>
+                        <td> @d.User1.name @d.User1.surname </td>
+
+                        @{
+                            RehberApp.Models.RehberContext context = new RehberApp.Models.RehberContext();
+                            var data = context.PhoneNumber.Where(x => x.userId == d.recordedUserId).ToList();
+
+                            if (data.Count > 0 && data != null)
+                            {
+                                <td>
+                                    @foreach (var n in data)
+                                    {
+                                        @n.phone
+                                        <br />
+                                    }
+                                </td>
+                            }
+                            else
+                            {
+                                <td> Kayıtlı numara bulunmamaktadır. </td>
+                            }
+                        }
+
+                        <td> @d.User1.email</td>
+                        <td> @d.User1.organization </td>
+                        <td>  <a href="/Rehber/Ekle/@d.recordedUserId"> Kişiye yeni numara ekle </a> </td>
+                    </tr>
+                }
+            }
+        }
+
+    </tbody>
+</table>
+

@@ -1,0 +1,29 @@
+﻿@model RehberApp.Models.PhoneNumber
+@{
+    ViewBag.Title = "Ekle";
+}
+
+<br />
+<br />
+<h2>Yeni Kayıt Ekle</h2>
+<br />
+<br />
+<form action="/Rehber/YeniEkle" method="post">
+    @Html.Label("Ad")
+    @Html.TextBoxFor(x => x.User.name)
+    @Html.Label("Soyad")
+    @Html.TextBoxFor(x => x.User.surname)
+    @Html.Label("Numara")
+    @Html.TextBoxFor(x => x.phone)
+    @Html.Label("Eposta")
+    @Html.TextBoxFor(x => x.User.email)
+    @Html.Label("Kurumu")
+    @Html.TextBoxFor(x => x.User.organization)
+    <button type="submit">Kaydet </button>
+</form>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

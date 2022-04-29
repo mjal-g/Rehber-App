@@ -1,0 +1,22 @@
+﻿@model RehberApp.Models.PhoneNumber
+@{
+    ViewBag.Title = "Ekle";
+}
+<br />
+<br />
+
+<h2>Kişiye Yeni Numara Ekle</h2>
+<br />
+<br />
+<form action="/Rehber/Ekle" method="post">
+    @Html.HiddenFor(x => x.userId)
+    @Html.Label("Numara")
+    @Html.TextBoxFor(x => x.phone)
+    <button type="submit">Kaydet </button>
+</form>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
